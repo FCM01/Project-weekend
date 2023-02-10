@@ -2,9 +2,9 @@
 import smtplib
 import imghdr
 from email.message import EmailMessage
-from datetime import datetime
-from PIL import Image
-import cv2 as cv
+
+
+
 print("hello")
 email_address  ="faraimatyukira1@gmail.com"
 email_password  ="rkmy yrqm qgpb rulf"
