@@ -1,14 +1,8 @@
-import random
-import string
+
 import smtplib
-import os
-import json
 import imghdr
 from email.message import EmailMessage
 from datetime import datetime
-import uuid
-#QR module import
-import qrcode
 from PIL import Image
 import cv2 as cv
 print("hello")
