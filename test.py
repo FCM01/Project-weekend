@@ -12,7 +12,7 @@ try:
     msg = EmailMessage()
     msg['Subject'] = 'Welcome to Salus'                    
     msg['From'] = email_address
-    msg['To']= "gernivisser@gmail.com"
+    msg['To']= "faraimatyukira1@gmail.com"
     msg.add_alternative(f"""
                             <!DOCTYPE html>
                             <html>
