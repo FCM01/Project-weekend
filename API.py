@@ -167,7 +167,8 @@ def get_contacts():
 def send_email():
     try:
         data  = request.get_json("data")
-        print(data)
+        to_email  = data["data"]["email"]
+        message  = data["data"]["message"]
 
 
     except Exception as e  :
@@ -187,7 +188,9 @@ def send_email():
 def send_email_invite():
     try:
         data  = request.get_json("data")
-        print(data)
+        to_email = data["data"]["email"]
+        tool  = email()
+        tool.send_invite(to_email)
 
 
     except Exception as e  :
