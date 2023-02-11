@@ -9,7 +9,7 @@ import json
 import datetime
 from pymongo import MongoClient
 
-
+from email_client import email
 
 def parse_json(data):
     return json.loads(json_util.dumps(data))
@@ -173,15 +173,15 @@ def send_email():
     except Exception as e  :
         print("ERROR:on /send/email",e)
 
-@app.route("/send/email/nouser",methods=["POST"])
-def send_email_nu():
-    try:
-        data  = request.get_json("data")
-        print(data)
+# @app.route("/send/email/nouser",methods=["POST"])
+# def send_email_nu():
+#     try:
+#         data  = request.get_json("data")
+#         print(data)
 
 
-    except Exception as e  :
-        print("ERROR:on /send/email",e)
+#     except Exception as e  :
+#         print("ERROR:on /send/email",e)
 
 @app.route("/send/email/invite",methods=["POST"])
 def send_email_invite():
