@@ -34,6 +34,7 @@ def make_appointment():
     try:
         data  = request.get_json("data")
         payload = data["data"]
+        email  = payload["email"]
         with open("./databases/appointment.json","r")as infile:
             data = json.load(infile)
             print(data)
@@ -44,6 +45,8 @@ def make_appointment():
                     "data":data["data"]
                 }
                 json.dump(new_data,outfile)
+            tool  = email
+            tool.send_appointment_confirmation(email)
             resp  = {"message":"new appointment made ",status:200}
             status = 200
 
@@ -98,6 +101,7 @@ def make_user():
     try:
         data  = request.get_json("data")
         payload = data["data"]
+        name = payload["name"]
         with open("./databases/user.json","r")as infile:
             data = json.load(infile)
             print(data)
@@ -108,6 +112,8 @@ def make_user():
                     "data":data["data"]
                 }
                 json.dump(new_data,outfile)
+            tool  = email 
+            tool.send_confirmation(name)
             resp  = {"message":"new usermade ",status:200}
             status = 200
 
@@ -165,15 +171,21 @@ def get_contacts():
 
 @app.route("/send/email",methods=["POST"])
 def send_email():
+    resp = {}
+    status  = 0
     try:
         data  = request.get_json("data")
         to_email  = data["data"]["email"]
         message  = data["data"]["message"]
+        tool  = email()
+        tool.send_email(to_email,message)
+        resp = {"message":"email has been sent"}
+        status  = 200
 
 
     except Exception as e  :
         print("ERROR:on /send/email",e)
-
+    return jsonify(resp),status
 # @app.route("/send/email/nouser",methods=["POST"])
 # def send_email_nu():
 #     try:
