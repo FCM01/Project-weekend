@@ -102,6 +102,7 @@ def make_user():
         data  = request.get_json("data")
         payload = data["data"]
         name = payload["name"]
+        to_email = payload["email"]
         with open("./databases/user.json","r")as infile:
             data = json.load(infile)
             print(data)
@@ -112,8 +113,8 @@ def make_user():
                     "data":data["data"]
                 }
                 json.dump(new_data,outfile)
-            tool  = email 
-            tool.send_confirmation(name)
+            tool  = email()
+            tool.send_confirmation(to_email,name)
             resp  = {"message":"new usermade ",status:200}
             status = 200
 
@@ -155,7 +156,7 @@ def get_contacts():
     status = 0
     try:
         contacts  = []
-        with open("./databases/appointment.json","r")as infile:
+        with open("./databases/user.json","r")as infile:
                 data = json.load(infile)
                 for i in data["data"]:
                     contacts.append(i)
@@ -198,15 +199,18 @@ def send_email():
 
 @app.route("/send/email/invite",methods=["POST"])
 def send_email_invite():
+    resp  ={}
+    status= 0
     try:
         data  = request.get_json("data")
         to_email = data["data"]["email"]
         tool  = email()
         tool.send_invite(to_email)
-
+        resp = {"message":"invite sent"}
+        status = 200
 
     except Exception as e  :
         print("ERROR:on /send/email/invite",e)
-
+    return jsonify(resp),status
 if __name__  =="__main__":
     app.run(debug=True)

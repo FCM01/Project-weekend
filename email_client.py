@@ -7,7 +7,6 @@ email_address  ="faraimatyukira1@gmail.com"
 email_password  ="rkmy yrqm qgpb rulf"
 class email:
     def send_confirmation(self,email,name):
-       
         try:
             msg = EmailMessage()
             msg['Subject'] = 'Welcome to Salus'                    
@@ -34,9 +33,9 @@ class email:
                     file_type = imghdr.what(image.name)
                     file_name= image.name
                     msg.add_attachment(file_data,maintype="image",subtype=file_type,filename =file_name)
-                with smtplib.SMTP_SSL("smtp.gmail.com" ,465) as smtp:
-                                    smtp.login(email_address,email_password)
-                                    smtp.send_message(msg)
+            with smtplib.SMTP_SSL("smtp.gmail.com" ,465) as smtp:
+                smtp.login(email_address,email_password)
+                smtp.send_message(msg)
         except Exception as e :
                         print("[retrieve] retrieve() error:",e)
     def send_email(self, email,message):
@@ -62,9 +61,9 @@ class email:
                     file_type = imghdr.what(image.name)
                     file_name= image.name
                     msg.add_attachment(file_data,maintype="image",subtype=file_type,filename =file_name)
-                with smtplib.SMTP_SSL("smtp.gmail.com" ,465) as smtp:
-                                    smtp.login(email_address,email_password)
-                                    smtp.send_message(msg)
+            with smtplib.SMTP_SSL("smtp.gmail.com" ,465) as smtp:
+                smtp.login(email_address,email_password)
+                smtp.send_message(msg)
         except Exception as e :
                         print("[retrieve] retrieve() error:",e)
 
@@ -72,15 +71,15 @@ class email:
     def send_invite(self, email):
         try:
             msg = EmailMessage()
-            msg['Subject'] = 'Welcome to Salus'                    
+            msg['Subject'] = 'Invite'                    
             msg['From'] = email_address
             msg['To']= email
             msg.add_alternative(f"""
                                     <!DOCTYPE html>
                                     <html>
                                         <body>
-                                             <h1 style ="color:#96c8cc;">Invite to maeke account</h1> 
-                                            <p>We care about your well being and a dear frind has asked for you to join out email server platform </p>
+                                             <h1 style ="color:#96c8cc;">Invite to make account</h1> 
+                                            <p>We care about your well being and a dear friend has asked for you to join our email server platform for better comunication </p>
                                             
                                         </body>
                                     </html>
@@ -92,9 +91,9 @@ class email:
                     file_type = imghdr.what(image.name)
                     file_name= image.name
                     msg.add_attachment(file_data,maintype="image",subtype=file_type,filename =file_name)
-                with smtplib.SMTP_SSL("smtp.gmail.com" ,465) as smtp:
-                                    smtp.login(email_address,email_password)
-                                    smtp.send_message(msg)
+            with smtplib.SMTP_SSL("smtp.gmail.com" ,465) as smtp:
+                smtp.login(email_address,email_password)
+                smtp.send_message(msg)
         except Exception as e :
                         print("[retrieve] retrieve() error:",e)
 
@@ -121,8 +120,11 @@ class email:
                     file_type = imghdr.what(image.name)
                     file_name= image.name
                     msg.add_attachment(file_data,maintype="image",subtype=file_type,filename =file_name)
-                with smtplib.SMTP_SSL("smtp.gmail.com" ,465) as smtp:
-                                    smtp.login(email_address,email_password)
-                                    smtp.send_message(msg)
+            with smtplib.SMTP_SSL("smtp.gmail.com" ,465) as smtp:
+                    smtp.login(email_address,email_password)
+                    smtp.send_message(msg)
         except Exception as e :
                         print("[retrieve] retrieve() error:",e)
+
+tool  = email()
+tool.send_confirmation("faraimatyukira1@gmail.com","Farai")
