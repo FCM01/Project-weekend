@@ -3,8 +3,7 @@ import smtplib
 import imghdr
 from email.message import EmailMessage
 
-email_address  ="faraimatyukira1@gmail.com"
-email_password  ="rkmy yrqm qgpb rulf"
+#get app password and email
 class email:
     def send_confirmation(self,email,name):
         try:
